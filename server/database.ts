@@ -1,9 +1,8 @@
-import config from 'config';
 import {ConnectionOptions, connect} from 'mongoose';
 
 const connectDB = async () => {
     try {
-        const mongoURI: string = `${config.get('mognodb.connectionString')}${config.get('mongodb.dbName')}`;
+        const mongoURI: string = process.env.MONGODB_CONNECTION ?? 'mongodb://localhost:27017/simple-singage';
         const options: ConnectionOptions = {
             useNewUrlParser: true,
             useCreateIndex: true,
